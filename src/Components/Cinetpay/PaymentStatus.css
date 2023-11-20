@@ -1,0 +1,21 @@
+.payment-button {
+    text-align: center;
+  }
+  
+  .payment-status {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  .accepted {
+    background-color: #dff0d8;
+    border-color: #d0e9c6;
+  }
+  
+  .refused {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+  }
+  
