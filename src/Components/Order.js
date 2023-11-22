@@ -1,48 +1,67 @@
 import React from "react";
 import Card from "./Card/Card";
+import Cart from "./Cart/Cart";
 
-function Order({ selectedProducts, onPlaceOrder, products, onAdd, onRemove, handleIncrement }) {
-  const getTotalItemsAndQuantity = () => {
-    let totalItems = 0;
-    let totalQuantity = 0;
-    let totalPrice = 0;
-
-    // Assurez-vous que selectedProducts est défini avant d'itérer
-    if (selectedProducts) {
-      selectedProducts.forEach((product) => {
-        totalItems++;
-        totalQuantity += product.quantity;
-        totalPrice += product.price * product.quantity;
-      });
-    }
-
-    return { totalItems, totalQuantity, totalPrice };
+function Order({ selectedProducts, onAdd, onRemove, handleIncrement }) {
+  const onQuantityChange = (productId, newQuantity) => {
+    console.log(`Change quantity of product ${productId} to ${newQuantity}`);
   };
 
-  const { totalItems, totalQuantity, totalPrice } = getTotalItemsAndQuantity();
+  const displayProduct = (productId) => {
+    const product = selectedProducts.find((p) => p.id === productId);
+    console.log(`Display product with ID ${productId}:`, product);
+  };
+
+  const displayTotalPrice = (productId) => {
+    const productsWithId = selected Products.filter((p) => p.id === productId);
+    const totalPrice = productsWithId.reduce((total, { price, quantity }) => total + price * quantity, 0);
+    console.log(`Total price of products with ID ${productId}: XOF${totalPrice.toFixed(2)}`);
+  };
+
+  const cartItems = selectedProducts || [];
+
+  const totalPrice = cartItems.reduce((total, { price, quantity }) => total + price * quantity, 0);
+
+  const isOrderComponent = true; // Définir cette variable à true car vous êtes dans le composant Order
 
   return (
     <>
-      <h1 className="heading">Welcome Cuisto Dingo</h1>
+      <h1 className="heading">Panier Cuisto Dingo</h1>
+      <div>
+        <h3>Cart Items:</h3>
+        {cartItems.length > 0 ? (
+          <>
+            <ul>
+              {cartItems.map(({ id, title, quantity, price }) => (
+                <li key={id}>
+                  {title} - Quantity: {quantity} - Price: XOF{price.toFixed(2)}
+                </li>
+              ))}
+            </ul>
+            <br />
+            <span className="bold">Total Price: XOF{totalPrice.toFixed(2)}</span>
+          </>
+        ) : (
+          <p>No items in the cart</p>
+        )}
+      </div>
       <div className="cards__container">
-        {selectedProducts && selectedProducts.map((product) => (
+        {cartItems.map((product) => (
           <Card
             product={product}
             key={product.id}
             onAdd={onAdd}
             onRemove={onRemove}
             handleIncrement={handleIncrement}
+            selectedProducts={selectedProducts}
+            onDisplayProduct={displayProduct}
+            onDisplayTotalPrice={displayTotalPrice}
+            isOrderComponent={isOrderComponent} // Passer la variable à Card.js
           />
         ))}
       </div>
 
-      <div className="order-summary">
-        <h2>Order Summary</h2>
-        <p>Total Items: {totalItems}</p>
-        <p>Total Quantity: {totalQuantity}</p>
-        <p>Total Price: {totalPrice} XOF</p>
-        <button onClick={onPlaceOrder}>Place Order</button>
-      </div>
+      <Cart cartItems={cartItems} onQuantityChange={onQuantityChange} />
     </>
   );
 }

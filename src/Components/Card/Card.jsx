@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Card.css";
 import Button from "../Button/Button";
 
-function Card({ product, onAdd, onRemove, selectedProducts }) {
+function Card({ product, onAdd, onRemove, selectedProducts, onDisplayProduct, onDisplayTotalPrice, isOrderComponent }) {
   const [count, setCount] = useState(0);
   const { title, Image, price, id } = product;
 
@@ -14,6 +14,7 @@ function Card({ product, onAdd, onRemove, selectedProducts }) {
     setCount(count - 1);
     onRemove(product);
   };
+  
 // ...
 const isSelected = selectedProducts && selectedProducts.some((p) => p.id === product.id);
 // ...
