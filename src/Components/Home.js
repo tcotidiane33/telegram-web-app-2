@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./Card/Card";
 import Cart from "./Cart/Cart";
 import Nav from "./Nav/Nav";
@@ -10,15 +10,20 @@ const { getData } = require("../db/db");
 const products = getData();
 const telegram = window.Telegram.WebApp;
 
-function App() {
+function Home() {
   const [cartItems, setCartItems] = useState([]);
   const [paymentResponse, setPaymentResponse] = useState(null);
 
   useEffect(() => {
     telegram.ready();
-  });
-
-  const [selectedProductId, setSelectedProductId] = useState(null);
+  }, []);
+  const handleQuantityChange = (productId, newQuantity) => {
+    // Votre logique pour changer la quantité du produit
+    const updatedCartItems = cartItems.map((item) =>
+      item.id === productId ? { ...item, quantity: newQuantity } : item
+    );
+    setCartItems(updatedCartItems);
+  };
 
   const onAdd = (productId) => {
     const exist = cartItems.find((x) => x.id === productId);
@@ -32,8 +37,6 @@ function App() {
     } else {
       setCartItems([...cartItems, { ...products.find((p) => p.id === productId), quantity: 1 }]);
     }
-
-    setSelectedProductId(productId);
   };
 
   const onRemove = (product) => {
@@ -51,40 +54,7 @@ function App() {
 
   const handlePayment = async () => {
     try {
-      const siteId = "911501";
-      const apiKey = "447088687629111c58c3573.70152188";
-      const transactionId = Math.floor(Math.random() * 100000000).toString();
-
-      const requestData = {
-        apikey: apiKey,
-        site_id: siteId,
-        transaction_id: transactionId,
-        amount: 100,
-        currency: 'XOF',
-        channels: 'ALL',
-        description: 'Test de paiement',
-        customer_name: "Kondro",
-        customer_surname: "Network",
-        customer_email: "support@kondronetwork.com",
-        customer_phone_number: "0769469844",
-        customer_address: "BP ABIDJAN 01",
-        customer_city: "Abidjan Cocody",
-        customer_country: "CI",
-        customer_state: "West Africa",
-        customer_zip_code: "00225"
-      };
-
-      const config = {
-        method: "post",
-        url: "https://api-checkout.cinetpay.com/v2/payment",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: requestData,
-      };
-
-      const response = await axios(config);
-      setPaymentResponse(response.data);
+      // Votre logique de paiement ici
     } catch (error) {
       setPaymentResponse({
         code: "ERROR",
@@ -94,32 +64,29 @@ function App() {
     }
   };
 
-  const handleIncrement = (productId) => {
-    // Add your logic for incrementing here
-    console.log(`Incrementing quantity for product with ID: ${productId}`);
-  };
-
   return (
     <>
       <h1 className="heading">Welcome Cuisto Dingo</h1>
       <Cart cartItems={cartItems} onClick={handlePayment}/>
       <Nav />
       <div className="cards__container">
-        {products.map((product) => {
-          return (
-            <Card product={product} key={product.id} onAdd={onAdd}  onRemove={onRemove} />
-          );
-        })}
+        {products.map((product) => (
+          <Card
+          product={product}
+          key={product.id}
+          onAdd={onAdd}
+          onRemove={onRemove}
+          onQuantityChange={handleQuantityChange} // Assurez-vous de transmettre cette fonction
+        />
+        ))}
       </div>
       <Order
         selectedProducts={cartItems}
         onPlaceOrder={handlePayment}
-        products={products}
-        onProductAdded={onAdd}
-        handleIncrement={handleIncrement}
+        onQuantityChange={handleQuantityChange}
       />
     </>
   );
 }
 
-export default App;
+export default Home;
