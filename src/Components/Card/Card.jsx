@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Card.css";
 import Button from "../Button/Button";
 
-function Card({ product, onAdd, onRemove }) {
+function Card({ product, onAdd, onRemove, onQuantityChange }) {
   const [count, setCount] = useState(0);
   const isSelected = false; // Vous devrez mettre en œuvre la logique de sélection
 
@@ -14,7 +14,10 @@ function Card({ product, onAdd, onRemove }) {
   const handleDecrement = () => {
     if (count > 0) {
       setCount(count - 1);
-      onRemove(product);
+      // Ajoutez une vérification pour éviter l'erreur si product est undefined
+      if (product && product.quantity !== undefined) {
+        onRemove(product);
+      }
     }
   };
   
