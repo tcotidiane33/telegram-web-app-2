@@ -2,21 +2,18 @@
 import React, { useState } from "react";
 import "./Order.css";
 import OrderItem from "./OrderItem";
+import { computed } from "@preact/signals-react";
+import { cartItems } from "../../db/productSignals";
 
-function Order({ selectedProducts, onPlaceOrder, onQuantityChange, onDeleteProduct }) {
+function Order({}) {
   const [isCheckout, setIsCheckout] = useState(false);
 
-  const calculateTotalPrice = (products) => {
-    return products.reduce((total, { price, quantity }) => total + price * quantity, 0);
-  };
+  const calculateTotalPrice = computed(()=> {
+    return cartItems.value.map((checkItem)=>{
+      return checkItem.price * checkItem.quantity
+    }).reduce((previous, next)=> previous + next)
+  });
 
-  const handleQuantityChange = (id, newQuantity) => {
-    if (newQuantity <= 0) {
-      onDeleteProduct(id);
-    } else {
-      onQuantityChange(id, newQuantity);
-    }
-  };
 
   const handleCheckout = () => {
     setIsCheckout(true);
@@ -30,7 +27,7 @@ function Order({ selectedProducts, onPlaceOrder, onQuantityChange, onDeleteProdu
         <div>
           <h3>Selected Items:</h3>
           <ul>
-            {selectedProducts.map(({ id, title, quantity, price, Image }) => (
+            {cartItems.value.map(({ id, title, quantity, price, Image }) => (
               <OrderItem
                 key={id}
                 id={id}
@@ -38,26 +35,25 @@ function Order({ selectedProducts, onPlaceOrder, onQuantityChange, onDeleteProdu
                 quantity={quantity}
                 price={price}
                 Image={Image}
-                onQuantityChange={handleQuantityChange}
-                onDeleteProduct={onDeleteProduct}
+                
               />
             ))}
           </ul>
           <br />
-          <span className="bold">Total Price: {calculateTotalPrice(selectedProducts).toFixed(2)}</span>
-          <h3>Payment Form:</h3>
+          <span className="bold">Total Price: {calculateTotalPrice}</span>
+          {/* <h3>Payment Form:</h3>
           <button className="btn btn-checkout" onClick={onPlaceOrder}>
             Place Order
-          </button>
+          </button> */}
         </div>
       ) : (
         // Afficher le formulaire de paiement
-        <div>
+        {/* <div>
           <h3>Payment Form:</h3>
           <button className="btn btn-checkout" onClick={handleCheckout} disabled={selectedProducts.length === 0}>
             Checkout
           </button>
-        </div>
+        </div> */}
       )}
     </div>
   );

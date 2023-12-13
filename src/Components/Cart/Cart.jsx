@@ -1,4 +1,4 @@
- import React from "react";
+import React from "react";
 import "./Cart.css";
 import Button from "../Button/Button";
 import { useHistory } from "react-router-dom";

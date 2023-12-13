@@ -20,7 +20,7 @@ const cp = new cinetpay(API_KEY, SITE_ID, NOTIFY_URL);
 cp.pay(totalAmount, transactionId, 'XOF', 'Custom Data', 'Order Payment')
     .then(response => {
         console.log('Payment successful:', response);
-        // Mettez à jour la base de données ou effectuez d'autres actions nécessaires
+        // Mettez à jour la      base de données ou effectuez d'autres actions nécessaires
     })
     .catch(err => {
         console.error('Payment error:', err);
