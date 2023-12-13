@@ -1,4 +1,4 @@
-import React from "react";
+ import React from "react";
 import "./Cart.css";
 import Button from "../Button/Button";
 import { useHistory } from "react-router-dom";
@@ -18,7 +18,7 @@ function Cart({ cartItems, onQuantityChange }) {
         <>
           
           <Button
-            title={`${cartItems && cartItems.length === 0 ? "Welcome to Cuisto Dingo !" : "Buy"} `}
+            title={`${cartItems && cartItems.length === 0 ? "Welcome Galatik Shop !" : "Voir mon Panier"} `}
             type={"checkout"}
             disable={cartItems && cartItems.length === 0 ? true : false}
             onClick={handleCheckout}

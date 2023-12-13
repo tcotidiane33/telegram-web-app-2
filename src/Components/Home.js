@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import Card from "./Card/Card";
 import Cart from "./Cart/Cart";
 import Nav from "./Nav/Nav";
-import Order from "./Order";
+import Order from "./Order/Order";
 import axios from "axios";
-import './Cinetpay/Payment.css';
 
 const { getData } = require("../db/db");
 const products = getData();
@@ -60,7 +59,7 @@ function Home() {
 
   return (
     <>
-      <h1 className="heading">Welcome Cuisto Dingo</h1>
+      <h1 className="heading">Welcome Chekete</h1>
       <Cart cartItems={cartItems} onClick={handlePayment}/>
       <Nav />
       <div className="cards__container">
