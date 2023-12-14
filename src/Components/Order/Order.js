@@ -1,5 +1,6 @@
 // Components/Order.js
-import React, { useState } from "react";
+import React from "react";
+import { useHistory } from "react-router-dom";
 import "./Order.css";
 import OrderItem from "./OrderItem";
 import { computed } from "@preact/signals-react";
@@ -7,6 +8,7 @@ import { cartItems } from "../../db/productSignals";
 import Nav from "../Nav/Nav";
 
 function Order() {
+  const history = useHistory();
 
   const calculateTotalPrice = computed(()=> {
     return cartItems.value.length>0 ?cartItems.value.map((checkItem)=>{
@@ -20,8 +22,6 @@ function Order() {
     <div>
       <h1 className="heading">Panier Chekete</h1>
       <Nav/>
-      {true ? (
-        // Afficher les éléments sélectionnés lors du paiement
         <div>
           <h3>Selected Items:</h3>
           <ul>
@@ -38,21 +38,14 @@ function Order() {
             ))}
           </ul>
           <br />
-          <span className="bold">Total Price: {calculateTotalPrice}</span>
+          <span className="bold heading">Total Price: {calculateTotalPrice}</span>
           <h3>Payment Form:</h3>
-          <button className="btn btn-checkout" >
-            Place Order
+          <button className="btn btn-checkout" onClick={() => history.push("/payRequest")}>
+            Passer Votre Commande
           </button>
+
+
         </div>
-      ) : (
-        // Afficher le formulaire de paiement
-        <div>
-          <h3>Payment Form:</h3>
-          <button className="btn btn-checkout"  disabled={cartItems.value.length === 0}>
-            Checkout
-          </button>
-        </div>
-      )}
     </div>
   );
 }

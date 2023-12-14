@@ -1,7 +1,7 @@
 // Payment.js
 
 import Order from "./Order";
-import { getData } from "../db/db";
+import { getData } from "../../db/db";
 
 const cinetpay = require("cinetpay-nodejs");
 
