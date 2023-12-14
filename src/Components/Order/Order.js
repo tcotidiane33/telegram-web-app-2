@@ -4,6 +4,7 @@ import "./Order.css";
 import OrderItem from "./OrderItem";
 import { computed } from "@preact/signals-react";
 import { cartItems } from "../../db/productSignals";
+import Nav from "../Nav/Nav";
 
 function Order() {
 
@@ -17,7 +18,8 @@ function Order() {
 
   return (
     <div>
-      <h1 className="heading">Panier Cuisto Dingo</h1>
+      <h1 className="heading">Panier Chekete</h1>
+      <Nav/>
       {true ? (
         // Afficher les éléments sélectionnés lors du paiement
         <div>
