@@ -38,13 +38,7 @@ const App = () => {
         <Route
           path="/order"
           render={(props) => (
-            <Order
-              {...props}
-              selectedProducts={cartItems}
-              onPlaceOrder={onPlaceOrder}
-              onQuantityChange={onQuantityChange}
-              onDeleteProduct={onDeleteProduct}
-            />
+            <Order/>
           )}
         />
         <Route path="/category" component={Category} />

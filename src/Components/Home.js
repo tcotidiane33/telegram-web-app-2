@@ -14,7 +14,7 @@ function Home() {
   return (
     <>
       <h1 className="heading">Welcome Chekete</h1>
-      {/* <Cart cartItems={cartItems} /> */}
+      <Cart cartItems={cartItems} />
       <Nav />
       <div className="cards__container">
         {products.map((product) => (

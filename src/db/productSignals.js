@@ -46,7 +46,7 @@ export const handleDecrement = (productId) => {
 }
 
 export const handleDelete = (productId) => {
-  cartItems.value = cartItems.value.find((x) => x.id !== productId)
+  cartItems.value = cartItems.value.filter((x) => x.id !== productId)
 }
 
 

@@ -5,24 +5,20 @@ import OrderItem from "./OrderItem";
 import { computed } from "@preact/signals-react";
 import { cartItems } from "../../db/productSignals";
 
-function Order({}) {
-  const [isCheckout, setIsCheckout] = useState(false);
+function Order() {
 
   const calculateTotalPrice = computed(()=> {
-    return cartItems.value.map((checkItem)=>{
+    return cartItems.value.length>0 ?cartItems.value.map((checkItem)=>{
       return checkItem.price * checkItem.quantity
-    }).reduce((previous, next)=> previous + next)
+    }).reduce((previous, next)=> previous + next):0
   });
 
 
-  const handleCheckout = () => {
-    setIsCheckout(true);
-  };
 
   return (
     <div>
       <h1 className="heading">Panier Cuisto Dingo</h1>
-      {isCheckout ? (
+      {true ? (
         // Afficher les éléments sélectionnés lors du paiement
         <div>
           <h3>Selected Items:</h3>
@@ -41,19 +37,19 @@ function Order({}) {
           </ul>
           <br />
           <span className="bold">Total Price: {calculateTotalPrice}</span>
-          {/* <h3>Payment Form:</h3>
-          <button className="btn btn-checkout" onClick={onPlaceOrder}>
+          <h3>Payment Form:</h3>
+          <button className="btn btn-checkout" >
             Place Order
-          </button> */}
+          </button>
         </div>
       ) : (
         // Afficher le formulaire de paiement
-        {/* <div>
+        <div>
           <h3>Payment Form:</h3>
-          <button className="btn btn-checkout" onClick={handleCheckout} disabled={selectedProducts.length === 0}>
+          <button className="btn btn-checkout"  disabled={cartItems.value.length === 0}>
             Checkout
           </button>
-        </div> */}
+        </div>
       )}
     </div>
   );
