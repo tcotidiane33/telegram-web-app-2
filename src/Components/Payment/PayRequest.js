@@ -3,38 +3,10 @@ import { CINETPAY } from "./cinetpay-nodejs/lib/cinetpay"; // Adjust the path as
 import "./payRequest.css";
 import Nav from '../Nav/Nav';
 
-
-const API_KEY = '447088687629111c58c3573.70152188';
-const SITE_ID = '911501';
-// const NOTIFY_URL = 'VOTRE_NOTIFY_URL';
-
-
-
-const PayRequest = ({ API_KEY, SITE_ID, NOTIFY_URL }) => {
-    const [amount, setAmount] = useState(0);
+const PayRequest = () => {
     
-    // const [transactionId, setTransactionId] = useState("");
-    const [currency, setCurrency] = useState("CFA");
-    const [custom, setCustom] = useState("");
-    const [designation, setDesignation] = useState("");
-
-    const handlePayment = async () => {
-        try {
-            const cinetpay = new CINETPAY(API_KEY, SITE_ID, NOTIFY_URL);
-            const paymentResponse = await cinetpay.pay(
-                amount,
-                // transactionId,
-                currency,
-                custom,
-                designation
-            );
-            console.log(paymentResponse);
-            // Gérer la réponse du paiement ici (redirection, affichage de confirmation, etc.)
-        } catch (error) {
-            console.error("Erreur de paiement:", error.message);
-            // Gérer les erreurs de paiement ici
-        }
-    };
+const setAmount () =
+    
 
     return (
         <div>
@@ -48,14 +20,6 @@ const PayRequest = ({ API_KEY, SITE_ID, NOTIFY_URL }) => {
                     onChange={(e) => setAmount(e.target.value)}
                 />
             </div>
-            {/* <div>
-                <label>ID de Transaction:</label>
-                <input
-                    type="text"
-                    value={transactionId}
-                    onChange={(e) => setTransactionId(e.target.value)}
-                />
-            </div> */}
             <div>
                 <label>Devise:</label>
                 <input
@@ -84,5 +48,4 @@ const PayRequest = ({ API_KEY, SITE_ID, NOTIFY_URL }) => {
         </div>
     );
 };
-
 export default PayRequest;

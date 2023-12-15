@@ -9,6 +9,8 @@ const request = axios.create({
     headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Access-Control-Allow-Origin': '*' }
 });
 
+
+
 export class CINETPAY {
     constructor(api_key, site_id, notify_url) {
         if (!api_key) throw new TypeError('api_key is required');

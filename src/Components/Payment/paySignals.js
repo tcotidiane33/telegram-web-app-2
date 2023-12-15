@@ -1,5 +1,3 @@
-import cinetpayNodejs from "cinetpay-nodejs";
-import { CinetPayConfig } from "@azinakou/cinetpay";
 import { cinetpay } from "@azinakou/cinetpay";
 
 const cinetpay = require("cinetpay-nodejs");
@@ -11,7 +9,7 @@ const SITE_ID = '911501';
 
 const cp = new cinetpay(API_KEY, SITE_ID, NOTIFY_URL);
 
-cp.pay(totalAmount, transactionId, 'XOF', 'Custom Data', 'Order Payment')
+ cp.pay(totalAmount, transactionId, 'XOF', 'Custom Data', 'Order Payment')
     .then(response => {
         console.log('Payment successful:', response);
         // Mettez à jour la      base de données ou effectuez d'autres actions nécessaires
