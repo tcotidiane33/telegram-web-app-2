@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./Components/Home";
 import Order from "./Components/Order/Order";
 import Category from "./Components/Category/Category";
-import payRequest from "./Components/Payment/payRequest";
+import PayRequest from "./Components/Payment/PayRequest";
 
 const App = () => {
 
@@ -24,7 +24,7 @@ const App = () => {
         <Route 
           path="/payRequest" 
           render={(props) => (
-            <payRequest/>
+            <PayRequest/>
           )} />
 
       </Switch>
