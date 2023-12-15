@@ -7,6 +7,7 @@ import Home from "./Components/Home";
 import Order from "./Components/Order/Order";
 import Category from "./Components/Category/Category";
 import PayRequest from "./Components/Payment/PayRequest";
+import PaymentForm from "./Components/API/test/PaymentForm";
 
 const App = () => {
 
@@ -17,15 +18,21 @@ const App = () => {
         <Route
           path="/order"
           render={(props) => (
-            <Order/>
+            <Order />
           )}
         />
         <Route path="/category" component={Category} />
-        <Route 
-          path="/payRequest" 
+        <Route
+          path="/payRequest"
           render={(props) => (
-            <PayRequest/>
+            <PayRequest />
           )} />
+        <Route
+          path="/paymentForm"
+          render={(props) => (
+            <PaymentForm />
+          )} />
+          
 
       </Switch>
     </BrowserRouter>

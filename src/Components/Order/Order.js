@@ -40,7 +40,8 @@ function Order() {
           <br />
           <span className="bold heading">Total Price: {calculateTotalPrice}</span>
           <h3>Payment Form:</h3>
-          <button className="btn btn-checkout" onClick={() => history.push("/payRequest")}>
+          {/*<button className="btn btn-checkout" onClick={() => history.push("/payRequest")}>*/}
+          <button className="btn btn-checkout" onClick={() => history.push("/paymentForm")}>
             Passer Votre Commande
           </button>
 

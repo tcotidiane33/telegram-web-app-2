@@ -18,3 +18,7 @@ const cp = new cinetpay(API_KEY, SITE_ID, NOTIFY_URL);
         console.error('Payment error:', err);
         // Affichez un message d'erreur à l'utilisateur ou effectuez d'autres actions nécessaires
     });
+
+
+
+    
