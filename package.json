@@ -28,7 +28,7 @@
     "react-bootstrap": "^2.9.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^5.3.4",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "signals": "^1.0.0",
     "telegraf": "^4.12.2",
     "util": "^0.12.5",
@@ -61,6 +61,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.23.6",
+    "@babel/plugin-proposal-private-property-in-object": "^7.16.7",
     "@babel/preset-env": "^7.23.6",
     "@babel/preset-react": "^7.23.3",
     "assert": "^2.1.0",

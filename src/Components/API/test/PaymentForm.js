@@ -3,7 +3,7 @@ import { Cinetpay } from "../cinetpay"; // Assurez-vous que le chemin est correc
 import Nav from "../../Nav/Nav";
 import { calculateTotalPrice } from "../../../db/productSignals";
 
-const { PaymentConfig, CinetPayConfig } = require('../models');
+// const { PaymentConfig, CinetPayConfig } = require('../models');
 const PaymentForm = () => {
     const [amount, setAmount] = useState(calculateTotalPrice.value);
     console.log(calculateTotalPrice.value);
@@ -39,8 +39,8 @@ const PaymentForm = () => {
             const cp = new Cinetpay({
                 apikey: '447088687629111c58c3573.70152188',
                 site_id: 911501,
-                notify_url: 'https://google.com/notify',
-                return_url: 'https://youtube.com/return',
+                notify_url: 'https://ecopayci.netlify.app/notify',
+                return_url: 'https://ecopayci.netlify.app/return',
                 lang: 'fr',
             });
 
