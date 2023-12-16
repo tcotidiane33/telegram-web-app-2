@@ -9,7 +9,7 @@ const PaymentForm = () => {
     console.log(calculateTotalPrice.value);
     const [currency, setCurrency] = useState("XOF");
     const [channels, setChannels] = useState("ALL");
-    const [description, setDescription] = useState("Test de paiement");
+    const [description, setDescription] = useState("Nom et Prénom ici - Test de paiement");
 
 
 
