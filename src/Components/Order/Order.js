@@ -1,7 +1,7 @@
 // Components/Order.js
 import React from "react";
 import { useHistory } from "react-router-dom";
-import "./order.css";
+import "./Order.css";
 import OrderItem from "./OrderItem";
 // import { computed } from "@preact/signals-react";
 import { cartItems , calculateTotalPrice } from "../../db/productSignals";

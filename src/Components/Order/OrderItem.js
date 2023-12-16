@@ -1,6 +1,6 @@
 import React from "react";
 import { handleDecrement, handleDelete, handleIncrement } from "../../db/productSignals";
-import './order.css';
+import './Order.css';
 
 function OrderItem({ id, title, quantity, price, Image }) {
   return (
