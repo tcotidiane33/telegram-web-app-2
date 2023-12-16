@@ -1,4 +1,5 @@
 import { signal } from "@preact/signals-react";
+import { computed } from "@preact/signals-react";
 const { getData } = require("../db/db");
 
 export const cartItems = signal([]);
@@ -52,5 +53,8 @@ export const handleDelete = (productId) => {
 }
 
 
-
-
+export const calculateTotalPrice = computed(() => {
+  return cartItems.value.length > 0 ? cartItems.value.map((checkItem) => {
+    return checkItem.price * checkItem.quantity
+  }).reduce((previous, next) => previous + next) : 0
+});

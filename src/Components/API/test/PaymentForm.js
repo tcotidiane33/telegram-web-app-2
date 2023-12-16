@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import { Cinetpay } from "../cinetpay"; // Assurez-vous que le chemin est correct
 import Nav from "../../Nav/Nav";
+import { calculateTotalPrice } from "../../../db/productSignals";
 
 const { PaymentConfig, CinetPayConfig } = require('../models');
 const PaymentForm = () => {
-    const [amount, setAmount] = useState(300);
+    const [amount, setAmount] = useState(calculateTotalPrice.value);
+    console.log(calculateTotalPrice.value);
     const [currency, setCurrency] = useState("XOF");
     const [channels, setChannels] = useState("ALL");
     const [description, setDescription] = useState("Test de paiement");
+
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -61,6 +66,7 @@ const PaymentForm = () => {
                         type="number"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
+                        readOnly
                     />
                 </div>
                 <div>
