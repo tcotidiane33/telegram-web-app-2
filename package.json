@@ -35,10 +35,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "nodemon bot.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts start",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "node": "nodemon bot.js"
   },
   "eslintConfig": {
     "extends": [
