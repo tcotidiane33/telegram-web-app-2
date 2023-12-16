@@ -33,13 +33,15 @@ export const handleDecrement = (productId) => {
   const exist = cartItems.value.find((x) => x.id === productId);
   if(exist){
     if (exist.quantity === 0) {
-      cartItems.value = cartItems.value.find((x) => x.id !== productId)
+      cartItems.value = cartItems.value.filter((x) => x.id !== productId)
       return
-    }
+    }  
+    
     
     cartItems.value = cartItems.value.map((x) =>
-      x.id === productId ? { ...exist, quantity: exist.quantity - 1 } : x
+    x.id === productId ? { ...exist, quantity: exist.quantity - 1 } : x
     )
+    
 
   }
   console.log(cartItems.value);

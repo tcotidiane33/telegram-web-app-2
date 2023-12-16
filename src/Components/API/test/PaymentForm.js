@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Cinetpay } from "../cinetpay"; // Assurez-vous que le chemin est correct
+import Nav from "../../Nav/Nav";
 
 const { PaymentConfig, CinetPayConfig } = require('../models');
 const PaymentForm = () => {
@@ -51,41 +52,44 @@ const PaymentForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label>Montant:</label>
-                <input
-                    type="number"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
-                />
-            </div>
-            <div>
-                <label>Devise:</label>
-                <input
-                    type="text"
-                    value={currency}
-                    onChange={(e) => setCurrency(e.target.value)}
-                />
-            </div>
-            <div>
-                <label>Canal:</label>
-                <input
-                    type="text"
-                    value={channels}
-                    onChange={(e) => setChannels(e.target.value)}
-                />
-            </div>
-            <div>
-                <label>Description:</label>
-                <input
-                    type="text"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                />
-            </div>
-            <button type="submit">Effectuer le Paiement</button>
-        </form>
+        <>
+            <Nav />
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label>Montant:</label>
+                    <input
+                        type="number"
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <label>Devise:</label>
+                    <input
+                        type="text"
+                        value={currency}
+                        onChange={(e) => setCurrency(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <label>Canal:</label>
+                    <input
+                        type="text"
+                        value={channels}
+                        onChange={(e) => setChannels(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <label>Description:</label>
+                    <input
+                        type="text"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                    />
+                </div>
+                <button type="submit">Effectuer le Paiement</button>
+            </form>
+        </>
     );
 };
 

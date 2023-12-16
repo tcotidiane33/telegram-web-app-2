@@ -16,8 +16,6 @@ function Order() {
     }).reduce((previous, next)=> previous + next):0
   });
 
-
-
   return (
     <div>
       <h1 className="heading">Panier Chekete</h1>
@@ -39,6 +37,8 @@ function Order() {
           </ul>
           <br />
           <span className="bold heading">Total Price: {calculateTotalPrice}</span>
+          <br />
+
           <h3>Payment Form:</h3>
           {/*<button className="btn btn-checkout" onClick={() => history.push("/payRequest")}>*/}
           <button className="btn btn-checkout" onClick={() => history.push("/paymentForm")}>

@@ -20,11 +20,11 @@ function Cart() {
 
   return (
     <div className="cart__container">
-      {cartItems.value.length === 0 ? "Panier" : (
+      {cartItems.value.length === 0 ? "🛒" : (
         <>
           
           <Button
-            title={`${cartItems.value.length === 0 ? "Welcome Galatik Shop !" : "Voir mon Panier"} `}
+            title={`${cartItems.value.length === 0 ? "Welcome To Galatik Shop ✔🎁 !" : "Voir mon Panier"} `}
             type={"checkout"}
             disable={cartItems.value.length === 0 ? true : false}
             onClick={handleCheckout}

@@ -24,7 +24,7 @@ export class Cinetpay {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 data: qs.stringify({ ...paymentConfig, ...this.config }),
-                timeout: 5000,
+                timeout: 10000,
             })
                 .then((response) => {
                     if (response.status === 200 && response.data.code === '201' && response.data.data) {
@@ -54,7 +54,7 @@ export class Cinetpay {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 data: qs.stringify({ transaction_id, ...this.config, token: transaction_id }),
-                timeout: 5000,
+                timeout: 10000,
             })
                 .then((response) => {
                     if (response.status === 200 && response.data.code === '00' && response.data.data) {

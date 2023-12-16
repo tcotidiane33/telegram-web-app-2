@@ -16,7 +16,7 @@ function OrderItem({ id, title, quantity, price, Image }) {
             <strong className="btns">{quantity}</strong>
             <button className="btns btn-add" onClick={() => handleIncrement(id)}>➕</button>
           </div>
-          <span className="item-price">Price: XOF{price.toFixed(2)}</span>
+          <span className="item-price">Price: XOF{price.toFixed(3)}</span>
           <button className="btnx" onClick={() => handleDelete(id)}>Remove</button>
         </div>
       </li>

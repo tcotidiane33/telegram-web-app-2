@@ -24,17 +24,7 @@ function Home() {
           />
         ))}
       </div>
-      {/* <Order
-        selectedProducts={cartItems}
-        onPlaceOrder={handlePayment}
-        onQuantityChange={handleQuantityChange}
-        onDeleteProduct={(productId) => {
-          // Mettez à jour l'état pour supprimer le produit avec l'ID spécifié
-          setCartItems((prevProducts) =>
-            prevProducts.filter((product) => product.id !== productId)
-          );
-        }}
-      /> */}
+      
     </>
   );
 }
