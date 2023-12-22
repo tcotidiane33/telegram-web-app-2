@@ -19,7 +19,6 @@ export const onAdd = (productId) => {
 };
 
 export const handleIncrement = (productId) => {
-  console.log("Called dec")
   const exist = cartItems.value.find((x) => x.id === productId);
   // if(){
 

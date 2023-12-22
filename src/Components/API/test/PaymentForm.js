@@ -5,7 +5,7 @@ import { calculateTotalPrice } from "../../../db/productSignals";
 
 // const { PaymentConfig, CinetPayConfig } = require('../models');
 const PaymentForm = () => {
-    const [amount, setAmount] = useState(calculateTotalPrice.value);
+    const [amount, setAmount] = useState(calculateTotalPrice.value.toFixed(3));
     console.log(calculateTotalPrice.value);
     const [currency, setCurrency] = useState("XOF");
     const [channels, setChannels] = useState("ALL");

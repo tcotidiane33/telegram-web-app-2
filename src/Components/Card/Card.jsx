@@ -23,7 +23,7 @@ function Card({ product }) {
         <img src={product.Image} alt={product.title} />
       </div>
       <h4 className="card__title">
-        {product.title} . <span className="card__price">{product.price} XOF</span>
+        {product.title} . <span className="card__price">{product.price.toFixed(3)} XOF</span>
       </h4>
 
       <div className="btn-container">
